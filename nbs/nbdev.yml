@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "solveblog"
+  site-url: "https://AnswerDotAI.github.io/solveblog"
+  description: ""
+  repo-branch: main
+  repo-url: "https://github.com/AnswerDotAI/solveblog"
