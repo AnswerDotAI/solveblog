@@ -36,9 +36,7 @@ solveblog_new(
 4.  Run `!solveblog` to serve your blog. The url will be printed
     immediately after running the command
 
-## Next steps
-
-### Writing posts
+## Writing posts
 
 You can add your own posts by adding them to `public/posts/`. Posts can
 be markdown files (`.md`) or solveit dialogs (`.ipynb`). Posts are
@@ -56,7 +54,7 @@ tags:
 ---
 ```
 
-### Writing pages
+## Writing pages
 
 You can add your own pages by adding them to `public/pages/`. Pages can
 also be markdown files (`.md`) or solveit dialogs (`*.ipynb`). Page
@@ -64,15 +62,7 @@ filenames are split on underscore (`_`) and the prefix is used as the
 sorting key. You can find an example `1_about.ipynb` page after running
 [`solveblog_new()`](https://AnswerDotAI.github.io/solveblog/core.html#solveblog_new).
 
-### Custom domains
-
-SolveIt supports custom domains. To make use of this feature:
-
-1.  Go to your instance settings menu in the SolveIt dashboard, and
-    follow the instructions to update the domain:port mapping.
-2.  Update`solveblog_settings.py` with the chosen port.
-
-### Autorun
+## Autorun
 
 If you run `solveblog` in a terminal window it’ll run until you close
 the tab. To keep it running you might want to create a dialog in the
@@ -84,6 +74,48 @@ code message with the following:
 ``` py
 !cd <your-project-dir> && solveblog
 ```
+
+## Custom domains
+
+SolveIt supports custom domains. To make use of this feature:
+
+1.  Go to your instance settings menu in the SolveIt dashboard, and
+    follow the instructions to update the domain:port mapping.
+2.  Update`solveblog_settings.py` with the chosen port.
+3.  Configure the DNS of your custom domain to point to `solve.it.com`
+    (see below)
+
+### DNS setup
+
+**For subdomains** (e.g., `app.example.com`): Create a CNAME record
+pointing to `solve.it.com`.
+
+**For apex/root domains** (e.g., `example.com`): Standard CNAME records
+won’t work. You need a provider that supports CNAME flattening or ALIAS
+records:
+
+| Provider      | Record Type                    |
+|---------------|--------------------------------|
+| Cloudflare    | CNAME (auto-flattened at apex) |
+| AWS Route 53  | ALIAS                          |
+| Azure DNS     | Alias                          |
+| DNS Made Easy | ANAME                          |
+| DNSimple      | ALIAS                          |
+| Namecheap     | ALIAS                          |
+| Porkbun       | ALIAS                          |
+
+> [!TIP]
+>
+> We recommend **Cloudflare** for DNS—just create a CNAME at the apex
+> and it handles flattening automatically.
+
+> [!WARNING]
+>
+> GoDaddy does not support CNAME flattening. Use a subdomain or switch
+> DNS providers.
+
+DNS changes can take up to 48 hours to propagate, though they often take
+effect much sooner.
 
 ## Credits
 
