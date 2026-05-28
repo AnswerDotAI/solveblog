@@ -120,4 +120,4 @@ effect much sooner.
 ## Credits
 
 Inspired by the beautiful personal website of Jack Hogan:
-[jackhogan.net](jackhogan.net)
+[jackhogan.net](https://jackhogan.net)
